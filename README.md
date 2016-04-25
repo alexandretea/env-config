@@ -1,2 +1,4 @@
 # kickstarters
-small tools which will help you to start out your projects development
+this repository contains:
+- configuration files
+- small tools which helps to start out projects development
