@@ -1,7 +1,7 @@
 #!/bin/bash
 
 basedir=$(dirname "$0")
-rsc_path=$basedir"/resources/cpp"
+rsc_path=$basedir"/../resources/cpp"
 
 if [ $# -lt 2 ]
 then
