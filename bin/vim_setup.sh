@@ -59,6 +59,15 @@ set background=dark
 let g:solarized_termcolors=256
 colorscheme solarized" >> ~/.vimrc
 
+# youcompleteme (code-completion engine)
+# /!\ need the following packages:
+# automake gcc gcc-c++ kernel-devel cmake python-devel python3-devel
+git clone https://github.com/valloric/youcompleteme ~/.vim/bundle/youcompleteme \
+    && cd ~/.vim/bundle/youcompleteme \
+    && git submodule update --init --recursive \
+    && ./install.py --all \
+    && cd -
+
 # nerd tree (filesystem browsing)
 git clone https://github.com/scrooloose/nerdtree ~/.vim/bundle/nerdtree
 
