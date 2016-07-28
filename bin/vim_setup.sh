@@ -65,7 +65,7 @@ colorscheme solarized" >> ~/.vimrc
 git clone https://github.com/valloric/youcompleteme ~/.vim/bundle/youcompleteme \
     && cd ~/.vim/bundle/youcompleteme \
     && git submodule update --init --recursive \
-    && ./install.py --all \
+    && ./install.py --clang-completer \
     && cd -
 
 # nerd tree (filesystem browsing)
