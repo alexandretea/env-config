@@ -1,87 +1,87 @@
 #!/bin/bash
 
+# script to setup my vim configuration
+
+# function to install a plugin with pathogen
+# first param is the git url, second is the settings
+pathogen_install() {
+    url=$1
+    settings=$2
+    target_name=$(basename "$url")
+    target_path=~/.vim/bundle/$target_name
+
+    if [ -e $target_path ]; then
+        echo "| Plugin '$target_name' is already installed"
+    else
+        echo "| Installing plugin '$target_name'"
+        git clone "$url" "$target_path"
+        if [ ${#settings} -gt 0 ]; then
+            echo "$settings" >> ~/.vimrc
+        fi
+    fi
+}
+
 mkdir -p ~/.vim && mkdir -p ~/.vim/bundle
 
-# formatting
-echo "\" Formatting {
 
-    set nowrap                      \" Do not wrap long lines
-    set autoindent                  \" Indent at the same level of the previous line
-    set shiftwidth=4                \" Use indents of 4 spaces
-    set expandtab                   \" Tabs are spaces, not tabs
-    set tabstop=4                   \" An indentation every four columns
-    set softtabstop=4               \" Let backspace delete indent
-    set nojoinspaces                \" Prevents inserting two spaces after punctuation on a join (J)
-    set splitright                  \" Puts new vsplit windows to the right of the current
-    set splitbelow                  \" Puts new split windows to the bottom of the current
-    \"set matchpairs+=<:>             \" Match, to be used with %
-    set pastetoggle=<F12>           \" pastetoggle (sane indentation on pastes)
-    \"set comments=sl:/*,mb:*,elx:*/  \" auto format comment blocks
-    \" Remove trailing whitespaces and ^M chars
-    \" To disable the stripping of whitespace, add the following to your
-    \" .vimrc.before.local file:
-    \"   let g:spf13_keep_trailing_whitespace = 1
-    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
-    \"autocmd FileType go autocmd BufWritePre <buffer> Fmt
-    autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
-    autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
-    \" preceding line best in a plugin but here for now.
+# install pathogen (useful to easily install vim plugins)
+target=~/.vim/autoload/pathogen.vim
+if [ ! -e $target ]; then
+    mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+        curl -LSso $target https://tpo.pe/pathogen.vim && \
+        echo "
+    \" Pathogen load
+    filetype off
 
-    autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+    call pathogen#infect()
+    call pathogen#helptags()
 
-    \" Workaround vim-commentary for Haskell
-    autocmd FileType haskell setlocal commentstring=--\ %s
-    \" Workaround broken colour highlighting in Haskell
-    autocmd FileType haskell,rust setlocal nospell
-
-\" }" >> ~/.vimrc
+    filetype plugin indent on
+    syntax on" >> ~/.vimrc
+else
+    echo "| Pathogen is already installed"
+fi
 
 
-# pathogen (useful to easily install vim plugins)
-mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-	curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim && \
-	echo "
-\" Pathogen load
-filetype off
+# install plugins without settings
+declare -a plugins=(
+"https://github.com/scrooloose/nerdtree"            # filesystem browsing
+"https://github.com/scrooloose/nerdcommenter"       # easy comenting
+"https://github.com/kien/ctrlp.vim"                 # ctrlp (fuzzy file finder)
+"https://github.com/scrooloose/syntastic"           # syntastic (syntax checker)
+"https://github.com/bling/vim-airline"              # vim-airline (custom status/tabline)
+"https://github.com/klen/python-mode"               # python mode
+"https://github.com/terryma/vim-multiple-cursors"   # vim-multiple-cursor
+"https://github.com/tpope/vim-abolish"              # search and substitute
+)
 
-call pathogen#infect()
-call pathogen#helptags()
+for plugin in "${plugins[@]}"
+do
+    pathogen_install "$plugin"
+done
 
-filetype plugin indent on
-syntax on" >> ~/.vimrc
 
-# solarized color scheme
-git clone git://github.com/altercation/vim-colors-solarized.git \
-	~/.vim/bundle/vim-colors-solarized && echo "
-\" Solarized settings
-syntax enable
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized" >> ~/.vimrc
+# install plugins with settings or specific installation
 
 # youcompleteme (code-completion engine)
 # /!\ need the following packages:
 # automake gcc gcc-c++ kernel-devel cmake python-devel python3-devel
-git clone https://github.com/valloric/youcompleteme ~/.vim/bundle/youcompleteme \
+target=~/.vim/bundle/youcompleteme
+if [ ! -e "$target" ]; then
+git clone https://github.com/valloric/youcompleteme $target \
     && cd ~/.vim/bundle/youcompleteme \
     && git submodule update --init --recursive \
     && ./install.py --clang-completer \
     && cd -
+else
+    echo "| Plugin 'YouCompleteMe' is already installed"
+fi
 
-# nerd tree (filesystem browsing)
-git clone https://github.com/scrooloose/nerdtree ~/.vim/bundle/nerdtree
+# solarized color scheme
+pathogen_install "https://github.com/altercation/vim-colors-solarized" "
+\" Solarized settings
+syntax enable
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized"
 
-# nerd commenter
-git clone https://github.com/scrooloose/nerdcommenter ~/.vim/bundle/nerdcommenter
-
-# ctrlp (fuzzy file finder)
-git clone https://github.com/kien/ctrlp.vim ~/.vim/bundle/ctrlp.vim
-
-# syntastic (syntax checker)
-git clone https://github.com/scrooloose/syntastic ~/.vim/bundle/syntastic
-
-# vim-airline (custom status/tabline)
-git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
-
-# python
-git clone https://github.com/klen/python-mode.git ~/.vim/bundle/python-mode
