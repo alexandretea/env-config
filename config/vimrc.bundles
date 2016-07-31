@@ -1,0 +1,51 @@
+" This file contains every bundles' settings
+" Their settings are only loaded if the bundle is installed
+
+" Solarized {
+    if isdirectory(expand("~/.vim/bundle/vim-colors-solarized/"))
+        syntax enable
+        set background=dark
+        let g:solarized_termcolors=256
+        colorscheme solarized
+    endif
+"}
+
+" Indent Guides {
+    if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
+        let g:indent_guides_start_level = 2
+        let g:indent_guides_guide_size = 1
+        let g:indent_guides_enable_on_vim_startup = 1
+
+        let g:indent_guides_auto_colors = 0
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=black
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
+    endif
+" }
+
+
+" Better Whitespaces {
+    if isdirectory(expand("~/.vim/bundle/vim-better-whitespace/"))
+        highlight ExtraWhitespace ctermbg=darkred
+        autocmd BufWritePre * StripWhitespace
+    endif
+" }
+
+" NerdTree {
+    if isdirectory(expand("~/.vim/bundle/nerdtree"))
+        map <C-e> :NERDTreeToggle<CR>
+
+        let NERDTreeShowBookmarks=1
+        let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+        let NERDTreeChDirMode=0
+        let NERDTreeQuitOnOpen=1
+        let NERDTreeMouseMode=2
+        let NERDTreeShowHidden=1
+        let NERDTreeKeepTreeInNewTab=1
+        let g:nerdtree_tabs_open_on_gui_startup=0
+    endif
+" }
+
+" SnipMate {
+    " Setting the author var
+    let g:snips_author = 'Alexandre Tea <alexandre.qtea@gmail.com>'
+" }
