@@ -1,3 +1,19 @@
+" Functions {
+    " Strip whitespace {
+    function! StripTrailingWhitespace()
+        " Preparation: save last search, and cursor position.
+        let _s=@/
+        let l = line(".")
+        let c = col(".")
+        " do the business:
+        %s/\s\+$//e
+        " clean up: restore previous search history, and cursor position
+        let @/=_s
+        call cursor(l, c)
+    endfunction
+    " }
+" }
+
 " Formatting {
 
     set nowrap                      " Do not wrap long lines
@@ -31,8 +47,15 @@
 
 " }
 
-" UI
-set hlsearch
+" UI {
+
+    " highlight search
+    set hlsearch 
+
+    " highlight after 80 columns
+    let &colorcolumn=join(range(81,82),",")
+
+" }
 
 " Keys behaviours
 set backspace=2
