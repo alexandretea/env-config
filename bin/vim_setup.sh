@@ -3,7 +3,6 @@
 # script to setup my vim configuration
 # TODO snippet engine
 # TODO header
-# TODO persistent undo
 # TODO describe blabla inspired from spf13 blabla
 
 # function to install a plugin with pathogen
@@ -49,6 +48,7 @@ declare -a plugins=(
     "https://github.com/ntpeters/vim-better-whitespace"     # highlights/strips trailing whitespaces
     "https://github.com/nathanaelkane/vim-indent-guides"    # show indent levels
     "https://github.com/townk/vim-autoclose"                # automatically closes ([{
+    "https://github.com/mbbill/undotree"                    # undo tree, persistent undo
 )
 
 for plugin in "${plugins[@]}"

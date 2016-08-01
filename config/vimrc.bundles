@@ -45,6 +45,24 @@
     endif
 " }
 
+
+" UndoTree {
+    if isdirectory(expand("~/.vim/bundle/undotree"))
+        if has('persistent_undo')
+            set undofile                " Persistent undo
+            set undodir=~/.vim.undodir/ " Set undo files directory
+            set undolevels=1000         " Maximum number of changes that can be undone
+            set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
+        endif
+
+        " create undodir if it doesn't exist yet
+        if !isdirectory(expand("~/.vim.undodir"))
+            call mkdir(expand("~/.vim.undodir" ), "p")
+        endif
+    endif
+" }
+
+
 " SnipMate {
     " Setting the author var
     let g:snips_author = 'Alexandre Tea <alexandre.qtea@gmail.com>'
