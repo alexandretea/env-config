@@ -1,4 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# Author:   Alexandre Tea <alexandre.qtea@gmail.com>
+# File:     /Users/alexandretea/Work/Personal/kickstarters/bin/vim_setup.sh
+# Purpose:  Set up my Vim environment
+# Created:  2016-08-06 23:54:43
+# Modified: 2016-08-06 23:55:29
 
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 

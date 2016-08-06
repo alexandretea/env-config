@@ -1,8 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# script to setup my vim configuration
+# Author:   Alexandre Tea <alexandre.qtea@gmail.com>
+# File:     /Users/alexandretea/Work/Personal/kickstarters/bin/vim_install_plugins.sh
+# Purpose:  Install vim plugins using Pathogen
+# Created:  2016-08-06 23:51:58
+# Modified: 2016-08-06 23:54:27
+
 # TODO snippet engine
-# TODO header
 # TODO describe blabla inspired from spf13 blabla
 
 # function to install a plugin with pathogen
@@ -49,6 +53,7 @@ declare -a plugins=(
     "https://github.com/nathanaelkane/vim-indent-guides"    # show indent levels
     "https://github.com/townk/vim-autoclose"                # automatically closes ([{
     "https://github.com/mbbill/undotree"                    # undo tree, persistent undo
+    "https://github.com/alexandretea/header.vim"            # file headers
 )
 
 for plugin in "${plugins[@]}"

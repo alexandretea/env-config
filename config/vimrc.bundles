@@ -10,6 +10,7 @@
     endif
 "}
 
+
 " Indent Guides {
     if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
         let g:indent_guides_start_level = 2
@@ -63,16 +64,17 @@
 " }
 
 
-" SnipMate {
-    " TODO if snipmate
-    " Setting the author var
-    let g:snips_author = 'Alexandre Tea <alexandre.qtea@gmail.com>'
+" Python Mode {
+    if isdirectory(expand("~/.vim/bundle/python-mode"))
+        " disable rope projects
+        let g:pymode_rope = 0
+        let g:pymode_rope_lookup_project = 0
+    endif
 " }
 
 
-" Python Mode {
-    if isdirectory(expand("~/.vim/bundle/python-mode"))
-        let g:pymode_rope = 0
-        let g:pymode_rope_lookup_project = 0
+" header.vim {
+    if isdirectory(expand("~/.vim/bundle/header.vim"))
+        let g:header_author = "Alexandre Tea <alexandre.qtea@gmail.com>"
     endif
 " }
