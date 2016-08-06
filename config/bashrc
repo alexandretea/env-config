@@ -1,3 +1,11 @@
+#!/usr/bin/env bash
+
+# Author:   Alexandre Tea <alexandre.qtea@gmail.com>
+# File:     /Users/alexandretea/Work/Personal/kickstarters/config/bashrc
+# Purpose:  bash settings
+# Created:  2016-08-07 00:02:14
+# Modified: 2016-08-07 00:02:21
+
 #shell prompt
 PS1="\u@\h:\w $ "
 

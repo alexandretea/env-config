@@ -1,5 +1,11 @@
-" This file contains every bundles' settings
-" Their settings are only loaded if the bundle is installed
+" Vim File
+
+" Author:   Alexandre Tea <alexandre.qtea@gmail.com>
+" File:     /Users/alexandretea/Work/Personal/kickstarters/config/vimrc.bundles
+" Purpose:  Vim bundles settings (loaded if the bundle is installed)
+" Created:  2016-08-07 00:03:03
+" Modified: 2016-08-07 00:03:29
+
 
 " Solarized {
     if isdirectory(expand("~/.vim/bundle/vim-colors-solarized/"))
