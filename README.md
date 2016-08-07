@@ -1,4 +1,5 @@
-# kickstarters
+# env-config
 this repository contains:
-- configuration files
-- small tools to set up a development environment
+- my configuration files
+- some scripts to easily set up my development environment (vim, ...)
+- some resources often needed
