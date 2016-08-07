@@ -4,22 +4,16 @@
 " File:     /Users/alexandretea/Work/Personal/kickstarters/config/vimrc
 " Purpose:  Vim general settings
 " Created:  2016-08-07 00:02:27
-" Modified: 2016-08-07 00:02:52
+" Modified: 2016-08-07 15:56:27
 
 
 " Functions {
 
-    " Strip whitespace {
-    function! StripTrailingWhitespace()
-        " Preparation: save last search, and cursor position.
-        let _s=@/
-        let l = line(".")
-        let c = col(".")
-        " do the business:
-        %s/\s\+$//e
-        " clean up: restore previous search history, and cursor position
-        let @/=_s
-        call cursor(l, c)
+    " Create directory if it doesn't exist {
+    function! CreateNotExistingDir(path)
+        if !isdirectory(expand(a:path))
+            call mkdir(expand(a:path), "p")
+        endif
     endfunction
     " }
 
@@ -88,8 +82,20 @@
 " }
 
 
-" File headers {
-    if filereadable(expand("~/.vimrc.fileheaders"))
-        source ~/.vimrc.fileheaders
-    endif
+" Directories {
+    set backupdir=~/.vim.bkpdir
+    set directory=~/.vim.swpdir
+    set undodir=~/.vim.undodir
+
+    " create directories if they don't exist yet
+    call CreateNotExistingDir(&backupdir)
+    call CreateNotExistingDir(&directory)
+    call CreateNotExistingDir(&undodir)
+" }
+
+
+" JSON {
+    nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+    command FormatJson set filetype=json | %!python -m json.tool
+    let g:vim_json_syntax_conceal = 0
 " }
