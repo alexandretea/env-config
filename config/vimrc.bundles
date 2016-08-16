@@ -4,7 +4,7 @@
 " File:     /Users/alexandretea/Work/Personal/kickstarters/config/vimrc.bundles
 " Purpose:  Vim bundles settings (loaded if the bundle is installed)
 " Created:  2016-08-07 00:03:03
-" Modified: 2016-08-07 15:50:17
+" Modified: 2016-08-08 10:04:39
 
 
 " Solarized {
@@ -63,6 +63,12 @@
     endif
 " }
 
+"
+" YouCompleteMe {
+    if isdirectory(expand("~/.vim/bundle/youcompleteme"))
+        let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/youcompleteme/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+    endif
+" }
 
 " Python Mode {
     if isdirectory(expand("~/.vim/bundle/python-mode"))
