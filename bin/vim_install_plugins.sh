@@ -4,7 +4,7 @@
 # File:     /Users/alexandretea/Work/Personal/kickstarters/bin/vim_install_plugins.sh
 # Purpose:  Install vim plugins using Pathogen
 # Created:  2016-08-06 23:51:58
-# Modified: 2016-08-16 11:56:13
+# Modified: 2016-08-16 12:03:55
 
 # TODO snippet engine
 # TODO describe blabla inspired from spf13 blabla
@@ -55,6 +55,7 @@ declare -a plugins=(
     "https://github.com/mbbill/undotree"                    # undo tree, persistent undo
     "https://github.com/alexandretea/header.vim"            # file headers
     "https://github.com/bling/vim-bufferline"               # displays buffers in tagbar
+    "https://github.com/mhinz/vim-signify"                  # displays diffs icons
 )
 
 for plugin in "${plugins[@]}"
