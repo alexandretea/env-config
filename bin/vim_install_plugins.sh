@@ -4,7 +4,7 @@
 # File:     /Users/alexandretea/Work/Personal/kickstarters/bin/vim_install_plugins.sh
 # Purpose:  Install vim plugins using Pathogen
 # Created:  2016-08-06 23:51:58
-# Modified: 2016-08-16 16:24:29
+# Modified: 2016-09-06 19:58:51
 
 # TODO snippet engine
 # TODO describe blabla inspired from spf13 blabla
@@ -61,6 +61,7 @@ declare -a plugins=(
     "https://github.com/MarcWeber/vim-addon-mw-utils"       # snipmate dependency
     "https://github.com/garbas/vim-snipmate"                # snippet engine
     "https://github.com/honza/vim-snippets"                 # snippets
+    "https://github.com/othree/html5.vim"                   # html5 omnicomplete, indent and syntax
 )
 
 for plugin in "${plugins[@]}"
