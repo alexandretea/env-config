@@ -4,11 +4,16 @@
 # File:     /Users/alexandretea/Work/Personal/kickstarters/config/bashrc
 # Purpose:  bash settings
 # Created:  2016-08-07 00:02:14
-# Modified: 2016-08-07 00:02:21
+# Modified: 2017-11-02 15:46:26
 
-#shell prompt
+# shell prompt
 PS1="\u@\h:\w $ "
+
+# colors
+CLICOLOR=1
+LSCOLORS=ExFxBxDxCxegedabagacad
 
 # aliases
 alias pingg="ping google.com"
 alias clean="rm -f *~ *.o *#"
+alias ls="ls -GFh"
