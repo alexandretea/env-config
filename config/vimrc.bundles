@@ -4,13 +4,14 @@
 " File:     /Users/alexandretea/Work/Personal/kickstarters/config/vimrc.bundles
 " Purpose:  Vim bundles settings (loaded if the bundle is installed)
 " Created:  2016-08-07 00:03:03
-" Modified: 2016-08-16 16:30:06
+" Modified: 2017-11-28 15:56:40
 
 
 " Solarized {
     if isdirectory(expand("~/.vim/bundle/vim-colors-solarized/"))
         syntax enable
         set background=dark
+        set t_Co=256
         let g:solarized_termcolors=256
         colorscheme solarized
     endif

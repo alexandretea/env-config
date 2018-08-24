@@ -4,7 +4,7 @@
 # File:     /Users/alexandretea/Work/Personal/kickstarters/bin/vim_install_plugins.sh
 # Purpose:  Install vim plugins using Pathogen
 # Created:  2016-08-06 23:51:58
-# Modified: 2016-09-06 19:58:51
+# Modified: 2017-11-28 15:58:22
 
 # TODO snippet engine
 # TODO describe blabla inspired from spf13 blabla
@@ -30,6 +30,7 @@ mkdir -p ~/.vim && mkdir -p ~/.vim/bundle && mkdir -p ~/.vim/snippets
 # install pathogen (useful to easily install vim plugins)
 target=~/.vim/autoload/pathogen.vim
 if [ ! -e $target ]; then
+    echo "Installing Pathogen; check URL"
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
         curl -LSso $target https://tpo.pe/pathogen.vim
 else
