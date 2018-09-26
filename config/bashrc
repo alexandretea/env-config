@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-# Author:   Alexandre Tea <alexandre.qtea@gmail.com>
-# File:     /Users/alexandretea/Work/Personal/kickstarters/config/bashrc
-# Purpose:  bash settings
-# Created:  2016-08-07 00:02:14
-# Modified: 2017-11-02 15:46:26
-
 # shell prompt
 PS1="\u@\h:\w $ "
 
@@ -16,4 +10,5 @@ LSCOLORS=ExFxBxDxCxegedabagacad
 # aliases
 alias pingg="ping google.com"
 alias clean="rm -f *~ *.o *#"
-alias ls="ls -GFh"
+alias ls="ls -GFh --color=auto"
+alias tmux="tmux -2"  # launches tmux with support for 256 color terms

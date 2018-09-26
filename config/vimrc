@@ -4,7 +4,7 @@
 " File:     /Users/alexandretea/Work/Personal/kickstarters/config/vimrc
 " Purpose:  Vim general settings
 " Created:  2016-08-07 00:02:27
-" Modified: 2017-11-30 15:09:07
+" Modified: 2018-09-11 15:30:18
 
 
 " Functions {
@@ -51,8 +51,8 @@
     " highlight search
     set hlsearch
 
-    " highlight after 80 columns
-    let &colorcolumn=join(range(81,82),",")
+    " highlight after 120 columns
+    let &colorcolumn=join(range(121,122),",")
 " }
 
 
